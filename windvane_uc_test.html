@@ -1,0 +1,79 @@
+
+<!DOCTYPE HTML>
+<HTML>
+<HEAD><TITLE></TITLE>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+    <link rel="stylesheet" href="http://h5.m.taobao.com/css/src/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+    <script type="text/javascript">window.onerror = function (a) {
+    };</script>
+</HEAD>
+<BODY onload="getUA()"><script type="text/javascript">
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","req_url=http%3a%2f%2fwapp%2em%2etaobao%2ecom%2fwv%2fplugins%2ehtml&amp;category=&amp;userid=739666941&amp;b2c_orid=&amp;b2c_auction=&amp;at_isb=&amp;atp_isdpp=&amp;at_ssid=&amp;bbid=&amp;aplus&amp;at_cart=&amp;at_udid=&asid=AAGOv6tTNNdQpIlWj0Y=",id="tb-beacon-aplus",src=(location>"https"?"//s":"//a")+".tbcdn.cn/s/aplus_wap.js")
+</script>
+
+<script type="text/javascript">
+    with (document)with (body)with (insertBefore(createElement("script"), firstChild))setAttribute("exparams", "req_url=http%3a%2f%2fwapp%2em%2etaobao%2ecom%2fwv%2fjsbridge%2ehtml&amp;category=&amp;userid=&amp;b2c_orid=&amp;b2c_auction=&amp;at_isb=&amp;atp_isdpp=&amp;at_ssid=&amp;bbid=&amp;aplus&amp;at_cart=&amp;at_udid=&asid=AAFDN2dTvB/Kx0eWf9c=", id = "tb-beacon-aplus", src = (location > "https" ? "//s" : "//a") + ".tbcdn.cn/s/aplus_wap.js")
+</script>
+<div class="container">
+    <nav id="navbar" class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header"><span class="navbar-brand"> WindVane Plugin Demo &nbsp; <button type="button"
+                                                                                                class="btn btn-danger"
+                                                                                                onclick="window.location.reload();">
+            刷新
+        </button> </span>
+        </div>
+    </nav>
+    <ul class="list-group">
+		<li class="list-group-item">
+            <ol class="breadcrumb">
+                <li class="active">当前 WebView SDK 环境检测</li>
+            </ol>
+                <p>当前UserAgent: </p>
+                <p id="userAgentSpan"></p>  
+                <br>
+                <p id="sdkSpan"></p> 
+            </p>
+            <script type="text/javascript">
+            function getUA() {
+               document.getElementById("userAgentSpan").innerText =  navigator.userAgent;
+               checkEnv();
+            }
+
+            function checkEnv() {
+                if ((/ UWS\//).test(window.navigator.userAgent)) {
+                    if(navigator.userAgent.indexOf("AliApp(TUnionSDK/") != -1) {
+                        document.getElementById("sdkSpan").innerText =  "当前处于 UC 浏览器环境";
+                        document.getElementById("sdkSpan").style.color = "Green"
+                    } else {
+                	    if((/ Chrome\/40/).test(window.navigator.userAgent)) {
+                		    document.getElementById("sdkSpan").innerText =  "当前处于UC SDK : U4 1.0 内核环境";
+                	    } else if((/ Chrome\/57/).test(window.navigator.userAgent)){
+                	        document.getElementById("sdkSpan").innerText =  "当前处于UC SDK : U4 2.0 内核环境";
+                	    } else {
+                	        document.getElementById("sdkSpan").innerText =  "当前处于UC SDK : U4 3.0 内核环境";
+                	    }
+                        document.getElementById("sdkSpan").style.color = "Green"
+                	}
+                } else if ((/ Android /).test(window.navigator.userAgent)) {
+                	document.getElementById("sdkSpan").innerText =  "当前不在 UC 内核环境, UC 内核需要动态下载，如需测试 UC 内核，请返回扫码界面，重新扫码进入本页面，直到提示信息变化。";
+                    document.getElementById("sdkSpan").style.color = "Red"
+                } else {
+                	document.getElementById("sdkSpan").innerText =  "当前不在 Android WebView 环境";
+                    document.getElementById("sdkSpan").style.color = "Red"
+                }
+            }
+            
+            </script>
+        </li>		
+    </ul>
+</div>
+</BODY>
+</HTML>
+<script src="http://h5.m.taobao.com/js/src/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://h5.m.taobao.com/js/src/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
